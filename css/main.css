@@ -172,7 +172,7 @@ img{
 align-items: flex-end;
 }
 .hide{
-    opacity: 0;
+    transform: inherit !important;
     transition: .4S;
 }
 /* Animate ghost */
