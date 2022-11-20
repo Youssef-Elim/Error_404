@@ -7,7 +7,7 @@ let bottom = document.querySelector(".navBottom"),
 if (bottom) {
     bottom.addEventListener("click", function () {
         list.classList.add("showMenu")
-        let error = document.querySelector(".homeData")
+        let error = document.querySelector(".homeError")
         error.classList.add("hide")
     })
 }
@@ -15,6 +15,8 @@ if (bottom) {
 if (close) {
     close.addEventListener("click", function () {
         list.classList.remove("showMenu")
+        let error = document.querySelector(".homeError")
+        error.classList.remove("hide")
     })
 }
 
