@@ -7,7 +7,7 @@ let bottom = document.querySelector(".navBottom"),
 if (bottom) {
     bottom.addEventListener("click", function () {
         list.classList.add("showMenu")
-        let error = document.querySelector(".homeError")
+        let error = document.querySelector(".homeData")
         error.classList.add("hide")
     })
 }
@@ -15,8 +15,6 @@ if (bottom) {
 if (close) {
     close.addEventListener("click", function () {
         list.classList.remove("showMenu")
-        let error = document.querySelector(".homeError")
-        error.classList.remove("hide")
     })
 }
 
@@ -33,3 +31,8 @@ const sr = ScrollReveal({
 sr.reveal(`.homeData`, { origin: 'top', delay: 400 })
 sr.reveal(`.homeImg`, { origin: 'bottom', delay: 600 })
 sr.reveal(`.homeFooter`, { origin: 'bottom', delay: 800 })
+
+let error = document.querySelector(".homeData")
+error.style.transform = "inherit !important"
+
+error.classList.add("hide")

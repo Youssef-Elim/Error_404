@@ -172,8 +172,7 @@ img{
 align-items: flex-end;
 }
 .hide{
-    opacity: 0;
-    transition: .4S;
+    transform: inherit !important;
 }
 /* Animate ghost */
 @keyframes floaty {
