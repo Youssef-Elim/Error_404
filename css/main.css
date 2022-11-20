@@ -1,15 +1,15 @@
-/*=============== GOOGLE FONTS ===============*/
+/*-------------- GOOGLE FONTS --------------*/
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
 
-/*=============== VARIABLES CSS ===============*/
+/*-------------- VARIABLES CSS --------------*/
 :root{
     --headerHeight: 3.5rem;
-    /*========== Colors ==========*/
+    /*-------------- Colors --------------*/
   /*Color mode HSL(hue, saturation, lightness)*/
   --firstColor: #dfaa4e;
   --textColor: #161513;
 
-  /*========== Font and typography ==========*/
+  /*-------------- Font and typography --------------*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --bodyFont: 'Space Grotesk', sans-serif;
   --biggestFontSize: 2.375rem;
@@ -26,7 +26,7 @@
   }
 }
 
-/*=============== BASE ===============*/
+/*-------------- BASE --------------*/
 * {
     margin: 0;
     padding: 0;
@@ -37,6 +37,8 @@ body {
     font-size: var(--normalFontSize);
     color: var(--textColor);
     font-weight: 500;
+    background-color: var(--firstColor);
+
 }
 li{
     list-style: none;
@@ -48,7 +50,7 @@ a {
 img{
     width: 100%;
 }
-/*=============== REUSABLE CSS CLASSES ===============*/
+/*-------------- REUSABLE CSS CLASSES --------------*/
 
 .container {
   max-width: 1024px;
@@ -57,15 +59,16 @@ img{
 }
 
 .main {
-  overflow: hidden; /* For the animations ScrollReveal */
+  overflow: hidden;
+ /* For the animations ScrollReveal */
 }
-/*=============== HEADER & NAV ===============*/
+/*-------------- HEADER & NAV --------------*/
 .header {
     height: var(--headerHeight);
     width: 100%;
-    z-index: 20;
     position: fixed;
-    /* background-color: var(--firstColor); */
+    top: 0;
+    left: 0;
 }
 nav{
     display: flex;
@@ -76,27 +79,32 @@ nav{
     font-weight: 700;
     font-size: 1.2rem;
 }
-.navList{
+@media screen and (max-width:767px) {
+    .navList{
+        background-color: var(--firstColor);
+        width: 100%;
+        z-index: 1000;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        padding: 4rem 0 2rem;
+        border-radius: 0 0 1.5rem 1.5rem;
+        box-shadow: #161513bd 0 0 25px -5px;
+        transition: .4s;
+    }
+}
+.list{
     display: flex;
-    background-color: var(--firstColor);
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    z-index: 100;
-    position: absolute;
-    top: -300%;
-    left: 0;
-    row-gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-radius: 0 0 1.5rem 1.5rem;
-    box-shadow: #161513bd 0 0 25px -5px;
-    transition: .4s;
+    row-gap: 2rem;
+    font-size: 1.2rem;
 }
 .navClose{
     position: absolute;
-    top: 0.2rem;
+    top: 1.5rem;
     right: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
 
 }
@@ -112,10 +120,9 @@ nav{
     top: 0;
 }
 
-/*=============== HOME ===============*/
+/*-------------- HOME --------------*/
 
 .home{
-    background-color: var(--firstColor);
   padding: 9rem 0 2rem;
   height: 100vh;
   display: grid;
@@ -145,16 +152,16 @@ nav{
     justify-self: center;
 }
 img{
-    width: 230px;
+    width: 240px;
     animation: floaty 1.8s infinite alternate;
 }
 .homeShadow{
-    width: 120px;
+    width: 130px;
     height: 20px;
     border-radius: 50%;
     background-color: rgba(87, 75, 75, 0.303);
     filter: blur(7px);
-    margin: auto;
+    margin:0 auto;
     animation: shadow 1.8s infinite alternate;
 }
 .homeFooter{
@@ -163,6 +170,10 @@ img{
     justify-content: center;
   column-gap: .5rem;
 align-items: flex-end;
+}
+.hide{
+    opacity: 0;
+    transition: .4S;
 }
 /* Animate ghost */
 @keyframes floaty {
@@ -178,12 +189,80 @@ align-items: flex-end;
         transform: scale(1,1);
     }
     100%{
-        transform:  scale(.7,.7);
+        transform:  scale(.85,.85);
     }
 }
-/*=============== BREAKPOINTS ===============*/
-@media screen and (min-width: 1024px) {
+/*-------------- BREAKPOINTS -------------*/
+/* for small screen */
+@media screen and (max-width: 360px) {
     body{
-        zoom: 1.4;
+        zoom: .8;
     }
+    .home{
+        height: 817px;
+        padding: 7rem 0 2rem;
+    }
+}
+/* for medium screen */
+@media screen and (min-width: 767px) {
+    .nav {
+    height: calc(var(--header-height) + 1.5rem);
+    }
+    .navBottom,
+    .navClose{
+        display: none;
+    }
+    .list{
+        flex-direction: row;
+        column-gap: 3.5rem;
+    }
+    img{
+        width: 400px;
+    }
+    .homeShadow{
+        width: 250px;
+        height: 40px;
+    }
+}
+/* For large devices */
+@media screen and (min-width: 1024px) {
+    .container{
+        margin: auto;
+    }
+    .homeContainer{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 3.5rem;
+    }
+    .homeData{
+        text-align: initial;
+        margin: auto;
+    }
+    .homeTitle{
+        margin-left: 0 ;
+    }
+    .nav{
+        width: 90%;
+        margin-left: auto;
+    }
+}
+/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
+@media screen and (min-width: 2048px) {
+  body {
+    zoom: 1.7;
+  }
+
+  .home {
+    height: initial;
+    row-gap: 4rem;
+    padding: 7.5rem 0 2rem;
+  }
+}
+/* For 4K resolutions (3840 x 2160, 4096 x 2160) */
+@media screen and (min-width: 3840px) {
+    body {
+    zoom: 3.1;
+    }
+    .home {
+    row-gap: 5.2rem;
+  }
 }
