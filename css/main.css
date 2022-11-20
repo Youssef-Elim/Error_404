@@ -173,7 +173,6 @@ align-items: flex-end;
 }
 .hide{
     transform: inherit !important;
-    transition: .4S;
 }
 /* Animate ghost */
 @keyframes floaty {
