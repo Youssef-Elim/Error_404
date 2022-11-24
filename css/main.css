@@ -173,7 +173,7 @@ align-items: flex-end;
 }
 .hide{
     transform: none !important;
-    transition: 0S;
+    transition: none !important;
 }
 /* Animate ghost */
 @keyframes floaty {
